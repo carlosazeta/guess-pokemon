@@ -7,13 +7,13 @@
 
 .pokemon-shape{
   image-rendering: pixelated;
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   filter: brightness(100) invert(1);
 }
 
 .pokemon-revealed {
   image-rendering: pixelated;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
