@@ -1,0 +1,19 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pokemon-shape{
+  image-rendering: pixelated;
+  width: 600px;
+  height: 600px;
+  filter: brightness(100) invert(1);
+}
+
+.pokemon-revealed {
+  image-rendering: pixelated;
+  width: 500px;
+  height: 500px;
+}
