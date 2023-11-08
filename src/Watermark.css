@@ -47,6 +47,7 @@
 }
 
 .watermark-p {
+  margin-left: 16px;
   font-size: 16px;
   font-weight: lighter;
 }
