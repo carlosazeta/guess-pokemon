@@ -1,76 +1,78 @@
-import { useState } from 'react'
 import { Lives } from './Lives'
+import { useGame } from '../hooks/useGame'
+import { useState } from 'react'
 
 export function Pokemon ({ id, image, name, loadNewPokemon }) {
-  const [unlockPokemon, setUnlockPokemon] = useState(false)
-  const [userGuess, setUserGuess] = useState('')
-  const [lives, setLives] = useState(3)
+  const {
+    state,
+    handleGuessCorrect,
+    handleGuessIncorrect,
+    handleResetGame
+  } = useGame()
+
+  const [userInput, setUserInput] = useState('')
+
+  const nameToUpperCase = name.toUpperCase()
 
   const handleGuessPokemon = () => {
-    const cleanUserGuess = userGuess.trim().toLowerCase()
+    const cleanUserGuess = userInput.trim().toLowerCase()
     const cleanPokemonName = name.trim().toLowerCase()
 
-    if (userGuess === '') return
+    if (state.gameOver || state.gameWon) return
 
-    setLives((prevLives) => {
-      const newLives = prevLives - 1
-
-      if (newLives === 0) {
-        setUnlockPokemon(true)
-      }
-
-      return newLives
-    })
+    if (cleanUserGuess === '') return
 
     if (cleanUserGuess === cleanPokemonName) {
-      setUnlockPokemon(true)
+      handleGuessCorrect()
+    } else {
+      handleGuessIncorrect()
     }
   }
 
-  // const handleKeyPress = (event) => {
-  //   console.log(event.key)
-  // }
-
-  const handleResetGame = () => {
-    setUnlockPokemon(false)
-    setUserGuess('')
+  const handleReset = () => {
+    handleResetGame()
+    setUserInput('')
     loadNewPokemon()
-    setLives(3)
   }
 
   return (
     <div className='nes-container is-rounded'>
-      {unlockPokemon && <span className='nes-text is-success'>{name}</span>}
+      {state.gameWon && <span className='nes-text is-success'>{nameToUpperCase}</span>}
+      {state.gameOver &&
+        <span className='nes-text is-error'>
+          The pokemon was {nameToUpperCase}
+        </span>}
       <img
-        className={unlockPokemon ? 'pokemon-revealed' : 'pokemon-shape'}
+        className={(state.gameOver || state.gameWon) ? 'pokemon-revealed' : 'pokemon-shape'}
         id={id}
         src={image}
         alt={name}
       />
       <div className='nes-field'>
-        <label htmlFor='name_field'>Guess here</label>
         <input
-          value={userGuess}
-          onChange={(e) => setUserGuess(e.target.value)}
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
           type='text'
           id='name_field'
           className='nes-input'
         />
       </div>
       <button
+        className='nes-btn'
+        onClick={handleReset}
+        type='button'
+      >Play again
+      </button>
+      <button
         onClick={handleGuessPokemon}
         type='button'
-        className='nes-btn is-primary'
+        className={state.gameOver || state.gameWon ? 'nes-btn is-primary is-disabled' : 'nes-btn is-primary'}
+        disabled={state.gameOver || state.gameWon}
       >
         Guess
       </button>
-      <button
-        className='nes-btn'
-        onClick={handleResetGame}
-      >Play again
-      </button>
       <Lives
-        lives={lives}
+        lives={state.lives}
       />
     </div>
   )
