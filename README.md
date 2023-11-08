@@ -1,8 +1,9 @@
-# React + Vite
+# Guess the pokemon!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App made with JS,React and Vite where you have to guess the pokemon from its shape.
 
-Currently, two official plugins are available:
+[Click here to try it](https://guess-pokemon-chi.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+![Pokemon shadow](https://github.com/carlosazeta/guess-pokemon/assets/78436847/4caaea16-05e8-4a49-aafc-91991174e6e9)
+![Pokemon revealed](https://github.com/carlosazeta/guess-pokemon/assets/78436847/841f5cc0-7847-4863-9f08-4e222ace9e26)
