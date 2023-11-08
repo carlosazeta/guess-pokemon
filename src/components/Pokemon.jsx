@@ -57,17 +57,19 @@ export function Pokemon ({ id, image, name, loadNewPokemon }) {
           className='nes-input'
         />
       </div>
+      <br />
       <button
         className='nes-btn'
         onClick={handleReset}
         type='button'
+        hidden={!state.gameOver && !state.gameWon}
       >Play again
       </button>
       <button
         onClick={handleGuessPokemon}
         type='button'
-        className={state.gameOver || state.gameWon ? 'nes-btn is-primary is-disabled' : 'nes-btn is-primary'}
-        disabled={state.gameOver || state.gameWon}
+        className='nes-btn is-primary'
+        hidden={state.gameOver || state.gameWon}
       >
         Guess
       </button>
