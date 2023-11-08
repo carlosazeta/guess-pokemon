@@ -1,0 +1,57 @@
+.watermark-container {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 100%;
+  max-width: 290px;
+  height: 70px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+}
+
+.watermark-container:hover {
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.watermark-img {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background: rgb(174,238,176);
+  background: radial-gradient(circle, rgba(174,238,176,1) 22%, rgba(233,229,148,1) 100%);
+}
+
+.watermark-container:hover > .watermark-img {
+  transition: 0.5s ease-in-out;
+}
+
+.watermark-textBox {
+  width: calc(100% - 60px);
+  margin-top: 16px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.watermark-textContent {
+  display: flex;
+  align-items: center;
+}
+
+.watermark-p {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.watermark-p span {
+  font-size: 16px;
+  font-weight: bold;
+}

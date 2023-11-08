@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import pokemonList from './services/api'
 import { Pokemon } from './components/Pokemon'
+import { Watermark } from './Watermark'
 
 function App () {
   const [pokemon, setPokemon] = useState()
@@ -30,6 +31,8 @@ function App () {
           />
         )
       }
+
+      <Watermark />
     </>
   )
 }
